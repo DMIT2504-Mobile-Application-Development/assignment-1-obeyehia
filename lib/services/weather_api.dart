@@ -8,6 +8,7 @@ Future<dynamic> getWeatherForCity({required String city}) async {
   try {
     final url = Uri.parse('$currentWeatherEndpoint?units=metric&q=$city&appid=$weatherApiKey');
 
+
     final response = await http.get(url);
 
   }
