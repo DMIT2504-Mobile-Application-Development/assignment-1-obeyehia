@@ -41,6 +41,26 @@ class CurrentWeather {
     _currentTime = value;
   }
 
+  set sunrise(DateTime value) {
+    if (value.isAfter(_currentTime)) {
+      throw Exception('Sunrise must be on the same day as current time');
+    }
+    if (value.isAfter(_sunset)) {
+      throw Exception('Sunrise cannot be after sunset');
+    }
+    _sunrise = value;
+  }
+
+  set sunset(DateTime value) {
+    if (value.isAfter(_currentTime)) {
+      throw Exception('Sunset must be on the same day as current time');
+    }
+    if (value.isBefore(_sunrise)) {
+      throw Exception('Sunset cannot be before sunrise');
+    }
+    _sunset = value;
+  }
+
   CurrentWeather({
     required String city,
     required String description,
