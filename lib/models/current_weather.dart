@@ -6,16 +6,6 @@ class CurrentWeather {
   late DateTime _sunrise;
   late DateTime _sunset;
 
-  CurrentWeather(String city, String description, double currentTemp,
-      DateTime currentTime, DateTime sunrise, DateTime sunset) {
-    this.city = city;
-    this.description = description;
-    this.currentTemp = currentTemp;
-    this.currentTime = currentTime;
-    this.sunrise = sunrise;
-    this.sunset = sunset;
-  }
-
   String get city => _city;
   String get description => _description;
   double get currentTemp => _currentTemp;
@@ -23,36 +13,47 @@ class CurrentWeather {
   DateTime get sunrise => _sunrise;
   DateTime get sunset => _sunset;
 
-set city (String value) {
-  if (value.trim().isEmpty) {
-    throw Exception('City cannot be empty');
+  set city(String value) {
+    if (value.trim().isEmpty) {
+      throw Exception('City cannot be empty');
+    }
+    _city = value;
   }
-  _city = value;
-}
 
-set description (String value) {
-  if (value.trim().isEmpty) {
-    throw Exception ('Description cannot be empty');
+  set description(String value) {
+    if (value.trim().isEmpty) {
+      throw Exception('Description cannot be empty');
+    }
+    _description = value;
   }
-  _description = value;
-}
 
-set currentTemp (double value) {
-  if (value < -100 || value > 100) {
-    throw Exception ('Temperature must be between -100 and 100');
+  set currentTemp(double value) {
+    if (value < -100 || value > 100) {
+      throw Exception('Temperature must be between -100 and 100');
+    }
+    _currentTemp = value;
   }
-  _currentTemp = value;
 
-}
-set currentTime (DateTime value) {
-  if (value.isAfter(DateTime.now())) {
-    throw Exception('Current time cannot be in the future');
+  set currentTime(DateTime value) {
+    if (value.isAfter(DateTime.now())) {
+      throw Exception('Current time cannot be in the future');
+    }
+    _currentTime = value;
   }
-  _currentTime = value;
+
+  CurrentWeather({
+    required String city,
+    required String description,
+    required double currentTemp,
+    required DateTime currentTime,
+    required DateTime sunrise,
+    required DateTime sunset,
+  }) {
+    this.city = city;
+    this.description = description;
+    this.currentTemp = currentTemp;
+    this.currentTime = currentTime;
+    this.sunrise = sunrise;
+    this.sunset = sunset;
+  }
 }
-
-
-
-
-}
-
