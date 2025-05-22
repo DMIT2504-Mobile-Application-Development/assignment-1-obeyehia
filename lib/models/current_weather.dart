@@ -23,6 +23,35 @@ class CurrentWeather {
   DateTime get sunrise => _sunrise;
   DateTime get sunset => _sunset;
 
+set city (String value) {
+  if (value.trim().isEmpty) {
+    throw Exception('City cannot be empty');
+  }
+  _city = value;
+}
+
+set description (String value) {
+  if (value.trim().isEmpty) {
+    throw Exception ('Description cannot be empty');
+  }
+  _description = value;
+}
+
+set currentTemp (double value) {
+  if (value < -100 || value > 100) {
+    throw Exception ('Temperature must be between -100 and 100');
+  }
+  _currentTemp = value;
+
+}
+set currentTime (DateTime value) {
+  if (value.isAfter(DateTime.now())) {
+    throw Exception('Current time cannot be in the future');
+  }
+  _currentTime = value;
+}
+
+
 
 
 }
