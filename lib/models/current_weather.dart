@@ -1,10 +1,14 @@
 class CurrentWeather {
-String _city;
-String _description;
-double _currentTemp;
-DateTime _currentTime;
-DateTime _sunrise;
-DateTime _sunset;
+late String _city;
+late String _description;
+late double _currentTemp;
+late DateTime _currentTime;
+late DateTime _sunrise;
+late DateTime _sunset;
 
+CurrentWeather(String city, String description, double currentTemp,
+    DateTime currentTime, DateTime sunrise, DateTime sunset ) {
+this.city = city;
+}
 
 }
