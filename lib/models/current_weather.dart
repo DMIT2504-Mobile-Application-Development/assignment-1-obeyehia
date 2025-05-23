@@ -76,4 +76,17 @@ class CurrentWeather {
     this.sunrise = sunrise;
     this.sunset = sunset;
   }
+
+  factory CurrentWeather.fromOpenWeatherData(dynamic data) {
+    return CurrentWeather(
+      city: data['name'],
+      description: data['weather'][0]['description'],
+      currentTemp: data['main']['temp'],
+      currentTime: DateTime.fromMillisecondsSinceEpoch(data['dt'] * 1000),
+      sunrise: DateTime.fromMillisecondsSinceEpoch(data['sys']['sunrise'] * 1000),
+      sunset: DateTime.fromMillisecondsSinceEpoch(data['sys']['sunset'] * 1000),
+
+    );
+  }
+
 }
