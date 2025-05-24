@@ -42,7 +42,9 @@ class CurrentWeather {
   }
 
   set sunrise(DateTime value) {
-    if (value.isAfter(_currentTime)) {
+    if (value.year != _currentTime.year ||
+        value.month != _currentTime.month ||
+        value.day != _currentTime.day) {
       throw Exception('Sunrise must be on the same day as current time');
     }
     if (value.isAfter(_sunset)) {
