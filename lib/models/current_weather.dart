@@ -1,10 +1,10 @@
 class CurrentWeather {
-  late String _city;
-  late String _description;
-  late double _currentTemp;
-  late DateTime _currentTime;
-  late DateTime _sunrise;
-  late DateTime _sunset;
+  String _city;
+  String _description;
+  double _currentTemp;
+  DateTime _currentTime;
+  DateTime _sunrise;
+  DateTime _sunset;
 
   String get city => _city;
   String get description => _description;
@@ -68,14 +68,12 @@ class CurrentWeather {
     required DateTime currentTime,
     required DateTime sunrise,
     required DateTime sunset,
-  }) {
-    this.city = city;
-    this.description = description;
-    this.currentTemp = currentTemp;
-    this.currentTime = currentTime;
-    this.sunrise = sunrise;
-    this.sunset = sunset;
-  }
+  })  : _city = city,
+        _description = description,
+        _currentTemp = currentTemp,
+        _currentTime = currentTime,
+        _sunrise = sunrise,
+        _sunset = sunset;
 
   factory CurrentWeather.fromOpenWeatherData(dynamic data) {
     return CurrentWeather(
